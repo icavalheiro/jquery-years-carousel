@@ -1,6 +1,6 @@
 import addSwipeListener from "./swipe"
 
-let rtl = false;
+let rtl = true;
 
 //add RTL classes
 if(rtl){
