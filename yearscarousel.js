@@ -1,6 +1,6 @@
 import addSwipeListener from "./swipe"
 
-let rtl = true;
+let rtl = true; // = $('html[dir='rtl']').length > 0
 
 //add RTL classes
 if(rtl){
@@ -27,6 +27,9 @@ function getCenterPositionForIndex(i){
 
 function updateDelta(value){
     if(value){
+        
+        if(rtl) value = -1 * value;
+
         dotsBaseX -= value; 
     }
     if(dotsBaseX > 0) dotsBaseX = 0;
@@ -96,8 +99,19 @@ function updateIndex(val){
 
     let currentSlide = $(slides[currentIndex]);
     let dataYear = currentSlide.attr('data-year');
+    
+    
+    //manage active class
     dots.removeClass('active');
     $('.years-carousel .year[data-year='+dataYear+']').addClass('active');
+
+    slides.removeClass('active');
+    currentSlide.addClass('active');
+
+    //set the current scroll on the parallax
+    let translate = Math.ceil((currentIndex / slides.length) * 100) +'%';
+    if(!rtl) translate = '-' + translate;
+    $('.parallax').css('transform', 'translateX(' + translate+')');
 
     dotsBaseX = getCenterPositionForIndex(currentIndex);
     updateDelta(0);
