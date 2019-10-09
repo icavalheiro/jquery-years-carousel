@@ -1,6 +1,6 @@
 import addSwipeListener from "./swipe"
 
-let rtl = false; // = $('html[dir='rtl']').length > 0
+let rtl = true; // = $('html[dir='rtl']').length > 0
 
 //add RTL classes
 if(rtl){

@@ -18,7 +18,30 @@ body{
         height: 100vw;
     }
 
-    
+    .boat{
+        position: absolute;
+        left: 100px;
+        bottom: 6vw;
+
+        svg{
+            max-width: 30vw;
+        }
+
+        @media (max-width: 730px){
+            bottom: 5vw;
+            svg{
+                max-width: 50vw;
+            }
+        }
+    }
+
+    &.rtl{
+        .boat{
+            left: unset;
+            right: 100px;
+            transform: scaleX(-1);
+        }
+    }
 
     color: white;
     overflow: hidden;
@@ -34,6 +57,10 @@ body{
         }
         .col {
             min-width: 350px;
+
+            &>.row{
+                margin-bottom: 30px;
+            }
         }
 
         @media (max-width: 730px){
